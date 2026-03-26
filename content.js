@@ -7,6 +7,7 @@ const TAG = '[SFMC-DE]';
 let _busy = false;
 let _recording = false;
 let _recordHandler = null;
+let _lastRecordedFolder = null;
 
 // ── Helpers ──────────────────────────────────────────
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
@@ -155,6 +156,7 @@ function startRecording() {
     _recording = true;
 
     // Clear previous recorded data
+    _lastRecordedFolder = null;
     chrome.storage.local.set({
         sfmcRecording: {active: true, folderPath: [], selectedDE: null},
     });
@@ -201,12 +203,7 @@ function startRecording() {
                 item.hasAttribute('aria-expanded') ||
                 clicked.matches('button.tree-branch-name'));
 
-        const isLeaf =
-            item &&
-            (item.classList.contains('tree-leaf') ||
-                clicked.matches(
-                    '.tree-leaf-name, .tree-leaf button, .tree-leaf span',
-                ));
+        const isLeaf = item && !isBranch;
 
         // If the click isn't a confirmed branch or leaf, ignore it
         if (!isBranch && !isLeaf) {
@@ -214,6 +211,19 @@ function startRecording() {
                 `${TAG} Ignoring click — not a tree branch or leaf: "${name}"`,
             );
             return;
+        }
+
+        // Synchronous duplicate guard — catches rapid close/open clicks
+        // before the async storage callback can race
+        if (isBranch && _lastRecordedFolder === name) {
+            console.log(
+                `${TAG} Skipping consecutive duplicate folder: "${name}"`,
+            );
+            return;
+        }
+
+        if (isBranch) {
+            _lastRecordedFolder = name;
         }
 
         chrome.storage.local.get('sfmcRecording', (data) => {
@@ -240,6 +250,7 @@ function startRecording() {
 function stopRecording() {
     if (!_recording) return;
     _recording = false;
+    _lastRecordedFolder = null;
     if (_recordHandler) {
         document.removeEventListener('click', _recordHandler, true);
         _recordHandler = null;
