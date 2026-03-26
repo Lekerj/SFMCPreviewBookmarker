@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>SFMC DE Selector</title>
+        <link rel="stylesheet" href="popup.css" />
+    </head>
+    <body>
+        <h1>SFMC DE Selector</h1>
+
+        <!-- Bookmark list -->
+        <div id="bookmark-list"></div>
+
+        <button
+            id="btn-add-bookmark"
+            class="btn-secondary"
+            style="margin-top: 0; margin-bottom: 10px"
+        >
+            + New Bookmark
+        </button>
+
+        <!-- Bookmark editor (hidden by default) -->
+        <div class="settings-panel" id="settings-panel" style="display: none">
+            <p class="settings-heading"><strong>Bookmark Name</strong></p>
+            <input
+                type="text"
+                id="input-name"
+                class="input-field"
+                placeholder="e.g. Denis Test DE"
+            />
+
+            <p class="settings-heading" style="margin-top: 8px">
+                <strong>Folder Path</strong>
+            </p>
+            <p class="settings-hint">
+                Each step in the folder tree. Must match folder node names
+                exactly.
+            </p>
+            <div id="folder-list" class="folder-list"></div>
+            <div class="folder-actions">
+                <button id="btn-add-folder" class="btn-small">
+                    + Add Folder
+                </button>
+                <button id="btn-record" class="btn-record">
+                    ⏺ Record from Page
+                </button>
+            </div>
+
+            <!-- Recording status banner (hidden by default) -->
+            <div id="record-banner" class="record-banner" style="display: none">
+                <span id="record-status-text"
+                    >Recording… click folders then DE on the page.</span
+                >
+                <button id="btn-stop-record" class="btn-stop-record">
+                    ⏹ Stop
+                </button>
+            </div>
+
+            <p class="settings-heading" style="margin-top: 10px">
+                <strong>Target Data Extension</strong>
+            </p>
+            <input
+                type="text"
+                id="input-de"
+                class="input-field"
+                placeholder="e.g. Ryan_TEST"
+            />
+
+            <div class="settings-buttons">
+                <button id="btn-save" class="btn-primary btn-half">Save</button>
+                <button id="btn-cancel" class="btn-secondary btn-half">
+                    Cancel
+                </button>
+            </div>
+        </div>
+
+        <p id="status" class="status"></p>
+
+        <div class="instructions">
+            <p><strong>How to use:</strong></p>
+            <ol>
+                <li>Click <strong>+ New Bookmark</strong></li>
+                <li>
+                    Use <strong>⏺ Record from Page</strong> — click folders
+                    &amp; DE on the SFMC tree, then re-open and stop
+                </li>
+                <li>Or type folder names manually</li>
+                <li>Save, then hit <strong>▶ Run</strong> anytime</li>
+            </ol>
+        </div>
+
+        <script src="popup.js"></script>
+    </body>
+</html>

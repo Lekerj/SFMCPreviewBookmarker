@@ -1,0 +1,385 @@
+/* ===================================================
+   popup.css — Minimal styling for the popup
+   =================================================== */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    width: 340px;
+    font-family:
+        -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-size: 13px;
+    color: #222;
+    padding: 16px;
+    background: #fafafa;
+}
+
+h1 {
+    font-size: 16px;
+    margin-bottom: 12px;
+    color: #1a1a2e;
+}
+
+/* ─── Config display ───────────────────────────────── */
+.config-display {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    padding: 10px 12px;
+    margin-bottom: 14px;
+}
+
+.config-display p {
+    margin-bottom: 2px;
+    line-height: 1.5;
+}
+
+.config-value {
+    color: #0066cc;
+    font-family: 'Consolas', 'Courier New', monospace;
+    font-size: 12px;
+    margin-bottom: 8px !important;
+    word-break: break-all;
+}
+
+/* ─── Bookmark cards ───────────────────────────────── */
+.bookmark-card {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    padding: 10px 12px;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+}
+
+.bookmark-info {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.bookmark-name {
+    font-weight: 600;
+    font-size: 13px;
+    color: #1a1a2e;
+}
+
+.bookmark-path {
+    color: #0066cc;
+    font-family: 'Consolas', 'Courier New', monospace;
+    font-size: 11px;
+    word-break: break-all;
+    line-height: 1.3;
+}
+
+.bookmark-actions {
+    display: flex;
+    gap: 4px;
+    flex-shrink: 0;
+}
+
+.btn-run-bookmark {
+    padding: 5px 10px;
+    background: #0066cc;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.btn-run-bookmark:hover {
+    background: #0052a3;
+}
+
+.btn-edit-bookmark,
+.btn-delete-bookmark {
+    padding: 5px 8px;
+    background: #f0f4f8;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    cursor: pointer;
+    line-height: 1;
+}
+
+.btn-edit-bookmark:hover {
+    background: #e0e8f0;
+}
+
+.btn-delete-bookmark:hover {
+    background: #fce4e4;
+    border-color: #dc3545;
+    color: #dc3545;
+}
+
+.empty-hint {
+    text-align: center;
+    color: #999;
+    font-size: 12px;
+    padding: 12px;
+}
+
+/* ─── Primary button ───────────────────────────────── */
+.btn-primary {
+    display: block;
+    width: 100%;
+    padding: 10px 14px;
+    background: #0066cc;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.btn-primary:hover {
+    background: #0052a3;
+}
+
+.btn-primary:active {
+    background: #003d7a;
+}
+
+.btn-primary:disabled {
+    background: #999;
+    cursor: not-allowed;
+}
+
+/* ─── Secondary button ─────────────────────────────── */
+.btn-secondary {
+    display: block;
+    width: 100%;
+    padding: 8px 12px;
+    margin-top: 8px;
+    background: #fff;
+    color: #0066cc;
+    border: 1px solid #0066cc;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.btn-secondary:hover {
+    background: #e8f0fe;
+}
+
+/* ─── Half-width buttons ──────────────────────────── */
+.btn-half {
+    display: inline-block;
+    width: 48%;
+}
+
+.settings-buttons {
+    margin-top: 12px;
+    display: flex;
+    justify-content: space-between;
+}
+
+/* ─── Settings panel ──────────────────────────────── */
+.settings-panel {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    padding: 12px;
+    margin-bottom: 14px;
+}
+
+.settings-heading {
+    margin-bottom: 2px;
+}
+
+.settings-hint {
+    font-size: 11px;
+    color: #888;
+    margin-bottom: 6px;
+}
+
+.input-field {
+    display: block;
+    width: 100%;
+    padding: 7px 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 13px;
+    font-family: 'Consolas', 'Courier New', monospace;
+    margin-bottom: 4px;
+    box-sizing: border-box;
+}
+
+.input-field:focus {
+    border-color: #0066cc;
+    outline: none;
+}
+
+/* ─── Folder rows ─────────────────────────────────── */
+.folder-list {
+    margin-bottom: 6px;
+}
+
+.folder-row {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    margin-bottom: 4px;
+}
+
+.folder-row .folder-input {
+    flex: 1;
+    margin-bottom: 0;
+}
+
+.btn-remove {
+    background: none;
+    border: none;
+    color: #dc3545;
+    font-size: 18px;
+    cursor: pointer;
+    padding: 2px 6px;
+    line-height: 1;
+    border-radius: 4px;
+}
+
+.btn-remove:hover {
+    background: #fce4e4;
+}
+
+.btn-small {
+    padding: 4px 10px;
+    font-size: 12px;
+    background: #f0f4f8;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.btn-small:hover {
+    background: #e0e8f0;
+}
+
+/* ─── Folder actions row ──────────────────────────── */
+.folder-actions {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 4px;
+}
+
+/* ─── Record button ───────────────────────────────── */
+.btn-record {
+    padding: 4px 10px;
+    font-size: 12px;
+    background: #fff0f0;
+    border: 1px solid #dc3545;
+    border-radius: 4px;
+    color: #dc3545;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.btn-record:hover {
+    background: #fce4e4;
+}
+
+/* ─── Recording banner ────────────────────────────── */
+.record-banner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    background: #fff3cd;
+    border: 1px solid #ffc107;
+    border-radius: 4px;
+    padding: 8px 10px;
+    margin: 8px 0;
+    font-size: 12px;
+    color: #856404;
+    animation: record-pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes record-pulse {
+    0%,
+    100% {
+        border-color: #ffc107;
+    }
+    50% {
+        border-color: #dc3545;
+    }
+}
+
+.record-banner span {
+    flex: 1;
+}
+
+.btn-stop-record {
+    padding: 4px 10px;
+    font-size: 12px;
+    background: #dc3545;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.btn-stop-record:hover {
+    background: #c82333;
+}
+
+/* ─── Status ───────────────────────────────────────── */
+.status {
+    margin-top: 10px;
+    padding: 0;
+    font-size: 12px;
+    min-height: 18px;
+    text-align: center;
+}
+
+.status.success {
+    color: #28a745;
+}
+
+.status.error {
+    color: #dc3545;
+}
+
+.status.info {
+    color: #0066cc;
+}
+
+/* ─── Instructions ─────────────────────────────────── */
+.instructions {
+    margin-top: 14px;
+    padding: 10px 12px;
+    background: #f0f4f8;
+    border-radius: 6px;
+    font-size: 12px;
+    color: #555;
+}
+
+.instructions p {
+    margin-bottom: 4px;
+}
+
+.instructions ol {
+    margin-left: 16px;
+}
+
+.instructions li {
+    margin-bottom: 3px;
+    line-height: 1.5;
+}
